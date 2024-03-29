@@ -30,10 +30,9 @@ function App() {
     fetchData();
   },[username]);
 
-  function clickHandler(event){
+  function clickHandler(){
     console.log(inputValue);
     setUsername(inputValue);
-    // fetchData();
   }
 
   function changeHandler(event){
