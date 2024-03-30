@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Card from './components/Card';
 
 function App() {
   const [username, setUsername] = useState("omkhodse18");
   const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(false);
+  const [userData, setUserData] = useState("omkhodse18") 
 
   const url = "https://api.github.com/users/"
-
+ 
   async function fetchData() {
     setLoading(true);
 
@@ -17,6 +19,7 @@ function App() {
       const response = await fetch(url+`${username}`)
       const data = await response.json();
       console.log(data);
+      setUserData(data);
 
     } catch (error) {
       console.log("Error Occures");
@@ -31,14 +34,15 @@ function App() {
   },[username]);
 
   function clickHandler(){
-    console.log(inputValue);
+    console.log(inputValue); 
     setUsername(inputValue);
   }
 
   function changeHandler(event){
     setInputValue(event.target.value);
   }
-
+  
+ 
   return (
     <div>
       <div>
@@ -55,6 +59,8 @@ function App() {
         </button>
       </div>
 
+
+      <Card userData={userData}/>
 
     </div>
   )
