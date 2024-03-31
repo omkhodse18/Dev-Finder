@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Card from './components/Card';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [username, setUsername] = useState("omkhodse18");
@@ -19,6 +19,10 @@ function App() {
       const response = await fetch(url+`${username}`)
       const data = await response.json();
       console.log(data);
+      if(data.message === "Not Found"){
+        toast.error("User not found");
+        return;
+      }
       setUserData(data);
 
     } catch (error) {
@@ -34,6 +38,11 @@ function App() {
   },[username]);
 
   function clickHandler(){
+    if(inputValue === ""){
+      toast.warning("Enter username");
+      return;
+    }
+
     console.log(inputValue); 
     setUsername(inputValue);
   }
@@ -42,6 +51,11 @@ function App() {
     setInputValue(event.target.value);
   }
   
+  function keyPressHandler(event){
+    if(event.key === "Enter"){
+      clickHandler();
+    }
+  }
  
   return (
     <div>
@@ -52,6 +66,8 @@ function App() {
           id='search'
           value={inputValue}
           onChange={changeHandler}
+          required
+          onKeyPress={keyPressHandler}
         />
 
         <button onClick={clickHandler}>

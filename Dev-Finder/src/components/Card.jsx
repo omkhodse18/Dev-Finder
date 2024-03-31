@@ -1,4 +1,8 @@
 import React, { useDebugValue } from 'react'
+import { IoLocationSharp } from "react-icons/io5";
+import { FaXTwitter } from "react-icons/fa6";
+import { BsPersonVcard } from "react-icons/bs";
+import { GoOrganization } from "react-icons/go";
 
 function Card({userData}) {
 
@@ -51,13 +55,53 @@ function Card({userData}) {
 
                 <div>
                     <div>
-                        <p>Location</p>
-                        <p>{userData.location}</p>
+                        <IoLocationSharp />
+
+                        {
+                            (userData.location) ? 
+                            (<p>{userData.location}</p>) :
+                            (<p>Not available</p>)
+                        }
                     </div>
 
                     <div>
-                        <p>Twitter</p>
-                        <p>{userData.twitter}</p>
+                        <FaXTwitter />
+                        
+                            {
+                                (userData.twitter_username) ? 
+                                (
+                                <a href={`https://twitter.com/${userData.twitter_username}`} target='_blank'>
+                                    <p>@{userData.twitter_username}</p>
+                                </a>
+                                ) : 
+                                (<p>Not available</p>)
+                            }
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <BsPersonVcard />
+
+                        {
+                            (userData.blog) ? 
+                            (
+                            <a href={userData.blog} target='_blank'>
+                                <p>@{userData.name}</p>
+                            </a>
+                            ) : 
+                            (<p>Not available</p>)
+                        }
+                    </div>
+
+                    <div>
+                        <GoOrganization />
+
+                        {
+                            (userData.company) ?
+                            (<p>{userData.company}</p>) :
+                            (<p>Not available</p>)
+                        }
                     </div>
                 </div>
             </div>
