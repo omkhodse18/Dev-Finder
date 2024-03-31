@@ -3,6 +3,7 @@ import './App.css'
 import Card from './components/Card';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Navbar from './components/Navbar';
 
 function App() {
   const [username, setUsername] = useState("omkhodse18");
@@ -58,26 +59,34 @@ function App() {
   }
  
   return (
-    <div>
-      <div>
-        <input 
-          type='text'
-          placeholder='Search user'
-          id='search'
-          value={inputValue}
-          onChange={changeHandler}
-          required
-          onKeyPress={keyPressHandler}
-        />
 
-        <button onClick={clickHandler}>
-          Search
-        </button>
+    <div className='container'>
+
+      <div className="app">
+        
+        <Navbar/>
+
+        <div className='searchbar-container'>
+          <input 
+            type='search'
+            placeholder='Search user'
+            id='search'
+            value={inputValue}
+            onChange={changeHandler}
+            required
+            onKeyDown={keyPressHandler}
+            className='border border-gray-300 rounded-md px-4 py-2 mr-2 focus:outline-none focus:border-blue-500'
+          />
+
+          <button onClick={clickHandler} className='bg-blue-500 text-white px-4 py-2 rounded-md'>
+            Search
+          </button>
+        </div>
+
+
+        <Card userData={userData}/>
+
       </div>
-
-
-      <Card userData={userData}/>
-
     </div>
   )
 }

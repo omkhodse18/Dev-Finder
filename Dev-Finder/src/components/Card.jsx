@@ -12,31 +12,35 @@ function Card({userData}) {
     };
     
     return (
-        <div>
-            <>card</>
-            <div className='img-div'>
-                <img src={userData.avatar_url}/>
+        <div className='flex flex-row bg-orange-300 md:relative w-[full]'>
+
+            <div className='mx-auto'>
+                <img 
+                className="aspect-square rounded-full w-[240px] h-[240px] z-[25]"
+                src={userData.avatar_url}
+                />
             </div>
 
-            <div className='details'>
-                <div>
+            <div className='details flex flex-col gap-y-3 p-4 max-w-[70%]'>
+                <div className='flex flex-row justify-between '>
                     <div className='Name-div'>
-                        <p>{userData.name}</p>
-                        <a href={userData.html_url} target='_blank'>
+                        <p className='text-2xl font-bold font-inter'>{userData.name}</p>
+                        <a href={userData.html_url} target='_blank'
+                        className='underline text-blue-600'>
                             <p>@{userData.login}</p>
                         </a>
                     </div>
 
-                    <div>
+                    <div className='font-inter font-medium'>
                         <p>Joined {formatDate(userData.created_at)}</p>
                     </div>
                 </div>
 
                 <div className='About-div'>
-                    <p>{userData.bio}</p>
+                    <p className='font-inter font-medium'>{userData.bio}</p>
                 </div>
 
-                <div className='Repo-div'>
+                <div className='Repo-div w-[80%] flex flex-row justify-around bg-gray-50'>
                     <div>
                         <p>Repos</p>
                         <p>{userData.public_repos}</p>
@@ -53,54 +57,54 @@ function Card({userData}) {
                     </div>
                 </div>
 
-                <div>
-                    <div>
-                        <IoLocationSharp />
+                <div className='flex flex-row justify-between'>
+                    <div className='flex flex-row items-center space-x-2'>
+                        <IoLocationSharp className='text-base font-medium'/>
 
                         {
                             (userData.location) ? 
-                            (<p>{userData.location}</p>) :
-                            (<p>Not available</p>)
+                            (<p className='text-base font-medium'>{userData.location}</p>) :
+                            (<p className='text-base font-medium'>Not available</p>)
                         }
                     </div>
 
-                    <div>
-                        <FaXTwitter />
+                    <div className='flex flex-row items-center space-x-2'>
+                        <FaXTwitter className='text-base font-medium'/>
                         
                             {
                                 (userData.twitter_username) ? 
                                 (
                                 <a href={`https://twitter.com/${userData.twitter_username}`} target='_blank'>
-                                    <p>@{userData.twitter_username}</p>
+                                    <p className='text-base font-medium'>@{userData.twitter_username}</p>
                                 </a>
                                 ) : 
-                                (<p>Not available</p>)
+                                (<p className='text-base font-medium'>Not available</p>)
                             }
                     </div>
                 </div>
 
-                <div>
-                    <div>
-                        <BsPersonVcard />
+                <div className='flex flex-row justify-between'>
+                    <div className='flex flex-row items-center space-x-2'>
+                        <BsPersonVcard className='text-base font-medium'/>
 
                         {
                             (userData.blog) ? 
                             (
                             <a href={userData.blog} target='_blank'>
-                                <p>@{userData.name}</p>
+                                <p className='text-base font-medium'>@{userData.name}</p>
                             </a>
                             ) : 
-                            (<p>Not available</p>)
+                            (<p className='text-base font-medium'>Not available</p>)
                         }
                     </div>
 
-                    <div>
-                        <GoOrganization />
+                    <div className='flex flex-row items-center space-x-2'>
+                        <GoOrganization className='text-base font-medium'/>
 
                         {
                             (userData.company) ?
-                            (<p>{userData.company}</p>) :
-                            (<p>Not available</p>)
+                            (<p className='text-base font-medium'>{userData.company}</p>) :
+                            (<p className='text-base font-medium'>Not available</p>)
                         }
                     </div>
                 </div>
