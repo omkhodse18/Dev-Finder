@@ -62,14 +62,15 @@ function App() {
  
   return (
 
-    <div className={`flex flex-col  items-center w-[100vw] h-[100vh] ${darkMode ? 'bg-slate-950' : 'bg-[rgb(234, 234, 236)]'}`}>
+    <div className={`flex flex-col  items-center w-[100%] h-screen ${darkMode ? 'bg-slate-950' : 'bg-[rgb(234, 234, 236)]'}`}>
 
       
-      <div className="app flex flex-col space-y-3 w-[724px] justify-center" id='app-main-div'>
+      <div className="app flex flex-col space-y-3 w-[724px]  justify-center" id='app-main-div'>
         
         <Navbar darkMode={darkMode} setDarkMode={setDarkMode}/>
 
         <div className='p-2 shadow-sm'>
+
           <div className='flex flex-row justify-between h-14 mt-7' id='searchbar-container'>
             <input 
               type='search'
