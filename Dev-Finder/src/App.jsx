@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import Card from './components/Card';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from './components/Navbar';
+import './App.css'
 
 function App() {
   const [username, setUsername] = useState("omkhodse18");
@@ -60,27 +60,30 @@ function App() {
  
   return (
 
-    <div className='container'>
+    <div className='flex flex-col  items-center w-[100vw] h-[100vh] bg-[rgb(234, 234, 236)]'>
 
-      <div className="app">
+      
+      <div className="app flex flex-col space-y-3 w-[724px]" id='app-main-div'>
         
         <Navbar/>
 
-        <div className='searchbar-container'>
-          <input 
-            type='search'
-            placeholder='Search user'
-            id='search'
-            value={inputValue}
-            onChange={changeHandler}
-            required
-            onKeyDown={keyPressHandler}
-            className='border border-gray-300 rounded-md px-4 py-2 mr-2 focus:outline-none focus:border-blue-500'
-          />
+        <div className='p-2 shadow-sm'>
+          <div className='flex flex-row justify-between h-14 mt-7' id='searchbar-container'>
+            <input 
+              type='search'
+              placeholder='Search user'
+              id='search'
+              value={inputValue}
+              onChange={changeHandler}
+              required
+              onKeyDown={keyPressHandler}
+              className='border rounded-3xl px-4 py-2 mr-2 w-[70%] focus:outline-none border-black focus:border-black font-inter text-lg '
+            />
 
-          <button onClick={clickHandler} className='bg-blue-500 text-white px-4 py-2 rounded-md'>
-            Search
-          </button>
+            <button onClick={clickHandler} className='bg-black text-white px-4 py-2 w-[30%] rounded-3xl font-poppins text-lg font-medium shadow-gray-500 shadow-md hover:shadow-gray-700 transition-shadow' id='search-btn'>
+              SEARCH
+            </button>
+          </div>
         </div>
 
 
