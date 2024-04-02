@@ -8,7 +8,7 @@ function Navbar({darkMode, setDarkMode}) {
   return (
     <div className='header flex flex-row font-poppins justify-between mt-7'>
 
-        <h1 className={`font-extrabold text-2xl ${darkMode ? 'text-white' : 'text-black'}`}>DEV-FINDER</h1>
+        <h1 className={`font-extrabold text-2xl ${darkMode ? 'text-white' : 'text-black'}`}>GIT-FINDER</h1>
 
         <button className='text-3xl' onClick={()=>setDarkMode(!darkMode)}>
           {
