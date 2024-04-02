@@ -1,14 +1,19 @@
 import React from 'react'
 import { MdLightMode } from "react-icons/md";
+import { MdDarkMode } from "react-icons/md";
 import './Navbar.css'
-function Navbar() {
+
+function Navbar({darkMode, setDarkMode}) {
+
   return (
     <div className='header flex flex-row font-poppins justify-between mt-7'>
-      
-        <h1 className='font-semibold text-2xl'>DEV-FINDER</h1>
 
-        <button className='text-3xl'>
-          <MdLightMode/>
+        <h1 className={`font-extrabold text-2xl ${darkMode ? 'text-white' : 'text-black'}`}>DEV-FINDER</h1>
+
+        <button className='text-3xl' onClick={()=>setDarkMode(!darkMode)}>
+          {
+            darkMode ? <MdLightMode color='yellow'/> : <MdDarkMode color='black'/> 
+          }
         </button>
     </div>
   )
